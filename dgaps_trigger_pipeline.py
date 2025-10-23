@@ -6,12 +6,12 @@ import sys
 
 def trigger_pipeline():
     client_id = "dataopssuite-restapi-client"
-    client_secret = "hhTJgx#t"
+    client_secret = "aX8zvVcI"
     username = "pravalika.kumbham"
-    password = "U2FsdGVkX1+tR3WLXG7E42v926C59kfqc5W1tvenA2Y="
-    pipeline_id = "7142a2c1029143fdaa5e538c2f9f962e"
+    password = "U2FsdGVkX1/r4i4Q5zABFxpRqogLFKaDY/BL/iR3kS4="
+    pipeline_id = "d16df8fd737144da8e455e84bfd3ebdc"
 
-    auth_url = "http://192.168.6.205:6055/dataopssecurity/oauth2/token"
+    auth_url = "https://poc.datagaps.com/dataopssecurity/oauth2/token"
     basic_auth_str = f"{client_id}:{client_secret}"
     base64_auth_str = base64.b64encode(basic_auth_str.encode()).decode()
 
@@ -34,7 +34,7 @@ def trigger_pipeline():
     access_token = response.json().get("access_token")
     print(" Authentication successful")
 
-    pipeline_url = f"http://192.168.6.205:6055/piper/jobs"
+    pipeline_url = "https://poc.datagaps.com/piper/jobs"
     pipe_headers = {
         "Authorization": f"Bearer {access_token}",
         "Content-Type": "application/json",
@@ -59,7 +59,7 @@ def trigger_pipeline():
 
 
 def pipeline_status(bearer_token, pipeline_run_id):
-    status_url = f"http://192.168.6.205:6055/piper/jobs/{pipeline_run_id}/status"
+    status_url = f"https://poc.datagaps.com/piper/jobs/{pipeline_run_id}/status"
     headers = {
         "Authorization": f"Bearer {bearer_token}",
         "Content-Type": "application/json",
@@ -96,7 +96,5 @@ print(final_status)
 if final_status == "COMPLETED":
     sys.exit(0)
 else:
-    print(final_status)
-    sys.exit(1)
     print(final_status)
     sys.exit(1)
