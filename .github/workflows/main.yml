@@ -3,7 +3,7 @@ name: Run Python Script
 on: 
   push:
     paths:
-      - 'Dataflow/Data Source/Dataflow_1850.json'
+      - 'Dataflow/Dataflow_1850.json'
 
 jobs:
   run-python:
